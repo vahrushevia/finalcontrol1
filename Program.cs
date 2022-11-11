@@ -9,14 +9,40 @@
 // ["1234", "1567", "-2", "computer science"] -> ["-2"]
 // ["Russia", "Denmark", "Kazan"] -> []
 Console.Clear();
-
 string[] arrBegin = WriteArray();
 PrintArray(arrBegin);
-
+string[] arrayFinish = ResultArray(arrBegin);
+PrintArray(arrayFinish);
+string[] ResultArray(string[] arrBegin)
+{
+    string[] resultArray = new string[CountArray(arrBegin)];
+    int j = 0;
+    for (int i = 0; i < arrBegin.Length; i++)
+    {
+        if (arrBegin[i].Length <= 3)
+        {
+            resultArray[j] = arrBegin[i];
+            j++;
+        }
+    }
+    return resultArray;
+}
+int CountArray(string[] arrBegin)
+{
+    int count = 0;
+    for (int i = 0; i < arrBegin.Length; i++)
+    {
+        if (arrBegin[i].Length <= 3)
+        {
+            count++;
+        }
+    }
+    return count;
+}
 string[] WriteArray()
 {
-    Console.Write("Введите значения через пробел: ");
-    return Console.ReadLine().Split(" ");
+    Console.Write("Введите значения через , и пробел: ");
+    return Console.ReadLine().Split(", ");
 }
 void PrintArray(string[] array)
 {
